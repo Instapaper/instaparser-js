@@ -5,7 +5,7 @@ A TypeScript/Node.js client library for the [Instaparser API](https://www.instap
 ## Installation
 
 ```bash
-npm install instaparser
+npm install instaparser-api
 ```
 
 Or install from source:
@@ -19,7 +19,7 @@ npm run build
 ## Quick Start
 
 ```typescript
-import { InstaparserClient } from 'instaparser';
+import { InstaparserClient } from 'instaparser-api';
 
 // Initialize the client with your API key
 const client = new InstaparserClient({ apiKey: 'your-api-key' });
@@ -51,7 +51,7 @@ console.log(article.words);
 Parse articles from URLs or HTML content:
 
 ```typescript
-import { InstaparserClient } from 'instaparser';
+import { InstaparserClient } from 'instaparser-api';
 
 const client = new InstaparserClient({ apiKey: 'your-api-key' });
 
@@ -173,7 +173,7 @@ import {
   InstaparserRateLimitError,
   InstaparserValidationError,
   InstaparserAPIError,
-} from 'instaparser';
+} from 'instaparser-api';
 
 const client = new InstaparserClient({ apiKey: 'your-api-key' });
 
@@ -285,7 +285,7 @@ import type {
   PDFOptions,
   OutputFormat,
   ArticleData,
-} from 'instaparser';
+} from 'instaparser-api';
 ```
 
 ## Requirements

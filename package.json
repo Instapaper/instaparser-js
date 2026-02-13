@@ -1,5 +1,5 @@
 {
-  "name": "instaparser",
+  "name": "instaparser-api",
   "version": "0.0.1",
   "description": "Instaparser API Typescript library — a client library for parsing articles, generating summaries, and processing PDFs",
   "main": "dist/index.js",
