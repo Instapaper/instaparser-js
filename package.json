@@ -1,0 +1,53 @@
+{
+  "name": "instaparser",
+  "version": "0.0.1",
+  "description": "Instaparser API Typescript library — a client library for parsing articles, generating summaries, and processing PDFs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "test": "jest",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "keywords": [
+    "instaparser",
+    "instaparser-api",
+    "article",
+    "parser",
+    "pdf",
+    "summary",
+    "sdk"
+  ],
+  "author": "Instapaper",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Instapaper/instaparser-js"
+  },
+  "homepage": "https://instaparser.com",
+  "bugs": {
+    "url": "https://github.com/Instapaper/instaparser-js/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "form-data": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
+}
