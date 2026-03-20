@@ -16,6 +16,7 @@ export interface ArticleData {
   videos?: string[];
   html?: string;
   text?: string;
+  markdown?: string;
 }
 
 export class Article {
@@ -85,7 +86,12 @@ export class Article {
   public readonly text?: string;
 
   /**
-   * The article body (HTML or text depending on output format)
+   * The markdown body (if output was 'markdown')
+   */
+  public readonly markdown?: string;
+
+  /**
+   * The article body (HTML, text, or markdown depending on output format)
    */
   public readonly body?: string;
 
@@ -106,7 +112,8 @@ export class Article {
     this.videos = data.videos ?? [];
     this.html = data.html;
     this.text = data.text;
-    this.body = this.html || this.text;
+    this.markdown = data.markdown;
+    this.body = this.html || this.text || this.markdown;
   }
 
   /**

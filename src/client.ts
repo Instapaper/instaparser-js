@@ -15,7 +15,7 @@ import {
   InstaparserValidationError,
 } from './exceptions';
 
-export type OutputFormat = 'html' | 'text';
+export type OutputFormat = 'html' | 'text' | 'markdown';
 
 export interface ArticleOptions {
   url: string;
@@ -137,7 +137,7 @@ export class InstaparserClient {
    * @param options - Article parsing options
    * @param options.url - URL of the article to parse (required)
    * @param options.content - Optional raw HTML content to parse instead of fetching from URL
-   * @param options.output - Output format, either 'html' (default) or 'text'
+   * @param options.output - Output format: 'html' (default), 'text', or 'markdown'
    * @param options.useCache - Whether to use cache (default: true)
    * @returns Promise resolving to Article object with parsed content
    * 
@@ -151,8 +151,8 @@ export class InstaparserClient {
   async article(options: ArticleOptions): Promise<Article> {
     const { url, content, output = 'html', useCache = true } = options;
 
-    if (output !== 'html' && output !== 'text') {
-      throw new InstaparserValidationError("output must be 'html' or 'text'");
+    if (output !== 'html' && output !== 'text' && output !== 'markdown') {
+      throw new InstaparserValidationError("output must be 'html', 'text', or 'markdown'");
     }
 
     const endpoint = '/api/1/article';
@@ -334,7 +334,7 @@ export class InstaparserClient {
    * @param options - PDF parsing options
    * @param options.url - URL of the PDF to parse (required for GET request)
    * @param options.file - PDF file to upload (required for POST request, can be Buffer, Readable stream, or file path string)
-   * @param options.output - Output format, either 'html' (default) or 'text'
+   * @param options.output - Output format: 'html' (default), 'text', or 'markdown'
    * @param options.useCache - Whether to use cache (default: true)
    * @returns Promise resolving to PDF object with parsed PDF content (inherits from Article)
    * 
@@ -356,8 +356,8 @@ export class InstaparserClient {
   async pdf(options: PDFOptions): Promise<PDF> {
     const { url, file, output = 'html', useCache = true } = options;
 
-    if (output !== 'html' && output !== 'text') {
-      throw new InstaparserValidationError("output must be 'html' or 'text'");
+    if (output !== 'html' && output !== 'text' && output !== 'markdown') {
+      throw new InstaparserValidationError("output must be 'html', 'text', or 'markdown'");
     }
 
     const endpoint = '/api/1/pdf';
