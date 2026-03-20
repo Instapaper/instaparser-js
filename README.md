@@ -36,7 +36,7 @@ console.log(article.words);
 
 ## Features
 
-- **Article Parsing**: Extract clean HTML or text from web articles
+- **Article Parsing**: Extract clean HTML, text, or markdown from web articles
 - **Summary Generation**: Generate AI-powered summaries with key sentences
 - **PDF Processing**: Parse PDFs from URLs or file uploads
 - **Error Handling**: Comprehensive exception handling for API errors
@@ -67,6 +67,14 @@ const article = await client.article({
 });
 console.log(article.text); // Plain text content
 console.log(article.body); // Same as text when output='text'
+
+// Parse from URL (markdown output)
+const article = await client.article({
+  url: 'https://example.com/article',
+  output: 'markdown',
+});
+console.log(article.markdown); // Markdown content
+console.log(article.body); // Same as markdown when output='markdown'
 
 // Parse from HTML content
 const htmlContent = '<html><body><h1>Title</h1><p>Content</p></body></html>';
@@ -101,9 +109,10 @@ article.words; // Word count
 article.isRtl; // Right-to-left language flag (note: camelCase)
 
 // Content
-article.body; // HTML or text (depending on output format)
+article.body; // HTML, text, or markdown (depending on output format)
 article.html; // HTML content (if output='html')
 article.text; // Plain text (if output='text')
+article.markdown; // Markdown content (if output='markdown')
 
 // Media
 article.images; // Array of image URLs
@@ -155,6 +164,14 @@ const pdf = await client.pdf({
 });
 console.log(pdf.text);
 console.log(pdf.body); // Same as text when output='text'
+
+// Parse PDF with markdown output
+const pdf = await client.pdf({
+  url: 'https://example.com/document.pdf',
+  output: 'markdown',
+});
+console.log(pdf.markdown);
+console.log(pdf.body); // Same as markdown when output='markdown'
 
 // Access all Article properties
 console.log(pdf.title);
@@ -213,7 +230,7 @@ Parse an article from a URL or HTML content.
 
 - `options.url`: URL of the article (required)
 - `options.content`: Optional HTML content to parse instead of fetching from URL
-- `options.output`: Output format - `'html'` (default) or `'text'`
+- `options.output`: Output format - `'html'` (default), `'text'`, or `'markdown'`
 - `options.useCache`: Whether to use cache (default: `true`)
 
 Returns: `Promise<Article>` object
@@ -235,7 +252,7 @@ Parse a PDF from a URL or file.
 
 - `options.url`: URL of the PDF (required for GET request)
 - `options.file`: PDF file to upload (required for POST request, can be Buffer, Readable stream, or file path string)
-- `options.output`: Output format - `'html'` (default) or `'text'`
+- `options.output`: Output format - `'html'` (default), `'text'`, or `'markdown'`
 - `options.useCache`: Whether to use cache (default: `true`)
 
 Returns: `Promise<PDF>` object (extends `Article`)
@@ -257,9 +274,10 @@ Represents a parsed article from Instaparser.
 - `isRtl`: Right-to-left language flag (camelCase)
 - `images`: Array of image URLs
 - `videos`: Array of embedded video URLs
-- `body`: Article body (HTML or text)
+- `body`: Article body (HTML, text, or markdown)
 - `html`: HTML content (if output was 'html')
 - `text`: Plain text content (if output was 'text')
+- `markdown`: Markdown content (if output was 'markdown')
 
 ### PDF
 
